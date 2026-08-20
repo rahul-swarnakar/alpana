@@ -118,11 +118,14 @@ a:focus-visible, button:focus-visible, .btn:focus-visible{
 .main-nav{
   display:flex;
   align-items:center;
+  justify-content:flex-end;
   padding-top:6px;
+  width:100%;
 }
 nav.main-nav ul{
   list-style:none;
   display:flex;
+  justify-content:flex-end;
   gap:26px;
   margin:0;
   padding:0;
