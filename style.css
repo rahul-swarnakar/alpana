@@ -176,6 +176,28 @@ nav.main-nav a.active{ color:var(--clay-dark); }
 .hero-panel dt:first-child{ margin-top:0; }
 .hero-panel dd{ margin:2px 0 0; font-size:0.95rem; }
 
+.hero-media{
+  position:relative;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 24px 60px -15px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.15);
+  background:var(--rice);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero-media img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:cover;
+  border-radius:10px;
+  transition:transform 0.35s ease;
+}
+.hero-media:hover img{
+  transform:scale(1.02);
+}
+
 @media (max-width: 860px){
   .hero .wrap{ grid-template-columns:1fr; padding-top:56px; padding-bottom:56px; }
 }
