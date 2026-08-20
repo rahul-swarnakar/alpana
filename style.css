@@ -72,31 +72,45 @@ a:focus-visible, button:focus-visible, .btn:focus-visible{
 /* ---------- header ---------- */
 .site-header{
   position:sticky; top:0; z-index:50;
-  background:rgba(251,248,240,0.92);
+  background:rgba(251,248,240,0.95);
   backdrop-filter:blur(6px);
   border-bottom:1px solid rgba(31,53,86,0.12);
 }
 .site-header .wrap{
   display:flex; align-items:center; justify-content:space-between;
-  padding-top:12px; padding-bottom:12px;
-  gap:20px;
+  padding-top:10px; padding-bottom:10px;
+  gap:16px;
 }
-.brand{ display:flex; align-items:center; gap:12px; text-decoration:none; }
-.brand img{ height:52px; width:auto; }
-.brand-text{ line-height:1.15; }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  text-align:left;
+  flex-shrink:1;
+  min-width:0;
+}
+.brand img{ height:48px; width:auto; flex-shrink:0; }
+.brand-text{
+  display:inline-flex;
+  align-items:center;
+  white-space:nowrap;
+  min-width:0;
+}
 .brand-text .name{
-  font-family:var(--display); font-weight:700; font-size:1.25rem;
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(0.8rem, 1.22vw, 1.06rem);
   color:var(--indigo-deep);
-}
-.brand-text .full{
-  font-size:0.68rem; letter-spacing:0.03em; color:var(--clay-dark);
-  text-transform:uppercase; font-weight:600;
+  white-space:nowrap;
+  line-height:1.2;
 }
 nav.main-nav ul{
-  list-style:none; display:flex; gap:26px; margin:0; padding:0;
+  list-style:none; display:flex; gap:20px; margin:0; padding:0;
+  white-space:nowrap;
 }
 nav.main-nav a{
-  text-decoration:none; font-weight:600; font-size:0.95rem;
+  text-decoration:none; font-weight:600; font-size:0.92rem;
   color:var(--ink); position:relative; padding-bottom:4px;
 }
 nav.main-nav a::after{
@@ -107,12 +121,13 @@ nav.main-nav a:hover::after, nav.main-nav a.active::after{ right:0; }
 nav.main-nav a.active{ color:var(--clay-dark); }
 .nav-toggle{ display:none; }
 
-@media (max-width: 760px){
+@media (max-width: 960px){
   nav.main-nav ul{
     position:fixed; inset:64px 0 auto 0; background:var(--paper);
     flex-direction:column; padding:18px 28px; gap:14px;
     border-bottom:1px solid rgba(31,53,86,0.12);
     transform:translateY(-130%); transition:transform 0.3s ease;
+    box-shadow:0 12px 24px rgba(0,0,0,0.1);
   }
   nav.main-nav ul.open{ transform:translateY(0); }
   .nav-toggle{
@@ -120,6 +135,10 @@ nav.main-nav a.active{ color:var(--clay-dark); }
     border-radius:6px; padding:7px 10px; font-size:1.1rem; cursor:pointer;
     color:var(--indigo);
   }
+}
+@media (max-width: 600px){
+  .brand img{ height:38px; }
+  .brand-text .name{ font-size:0.72rem; }
 }
 
 /* ---------- alpona motif divider ---------- */
