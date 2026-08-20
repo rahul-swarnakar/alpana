@@ -6,7 +6,7 @@
 <title>Programmes — ALPANA</title>
 <meta name="description" content="ALPANA's programmes: livelihood promotion through Birbhum's craft traditions, community awareness, and household need assessment.">
 <link rel="icon" href="images/alpana-logo.png?v=2">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -198,10 +198,26 @@
   document.getElementById('year').textContent = new Date().getFullYear();
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.getElementById('primary-nav');
-  if(toggle){
-    toggle.addEventListener('click', () => {
+  if(toggle && nav){
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       const open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open);
+      toggle.textContent = open ? 'Close ✕' : 'Menu ☰';
+    });
+    document.addEventListener('click', (e) => {
+      if(!nav.contains(e.target) && !toggle.contains(e.target) && nav.classList.contains('open')){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.textContent = 'Menu ☰';
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && nav.classList.contains('open')){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.textContent = 'Menu ☰';
+      }
     });
   }
 </script>
