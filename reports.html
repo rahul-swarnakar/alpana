@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reports &amp; Impact — ALPANA</title>
+<meta name="description" content="Annual reports and impact updates from ALPANA, Bolpur, Birbhum.">
+<link rel="icon" href="images/alpana-logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="images/alpana-logo.png" alt="ALPANA logo">
+      <span class="brand-text">
+        <span class="name">ALPANA</span><br>
+        <span class="full">Livelihood · Awareness · Need Assessment</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu ☰</button>
+    <nav class="main-nav">
+      <ul id="primary-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="reports.html" class="active">Reports</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="hero-motif" style="opacity:0.12;"><img src="images/hero-motif.svg" alt=""></div>
+  <div class="wrap">
+    <span class="eyebrow">Reports</span>
+    <h1>Reports &amp; impact</h1>
+    <p>Annual reports, survey findings and programme updates from ALPANA. This section is being built up — write to us at <a href="mailto:alpanaorg@gmail.com" style="color:#E2941F;">alpanaorg@gmail.com</a> for a report not yet listed here.</p>
+  </div>
+</section>
+<div class="alpona-divider on-indigo"><img src="images/alpona-divider-cream.svg" alt=""></div>
+
+<section class="section-rice">
+  <div class="wrap">
+    <div class="kicker">
+      <span class="eyebrow">Documents</span>
+      <h2 class="mt-0">Annual reports</h2>
+    </div>
+    <table class="reports">
+      <thead>
+        <tr><th>Report</th><th>Focus area</th><th>Status</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Annual Report 2025–26</td>
+          <td>Livelihood &amp; awareness activity</td>
+          <td><span class="tag">Coming soon</span></td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Household Need Assessment Survey</td>
+          <td>Bolpur block</td>
+          <td><span class="tag">Coming soon</span></td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Society Registration Certificate</td>
+          <td>S/2L/9874 of 2013–2014</td>
+          <td><span class="tag">On file</span></td>
+          <td>Available on request</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:20px;font-size:0.9rem;color:#5c4d41;">We're in the process of digitising past reports. Once ready, they'll be listed here as downloadable PDFs.</p>
+  </div>
+</section>
+
+<section class="section-indigo">
+  <div class="wrap">
+    <div class="kicker">
+      <span class="eyebrow" style="color:#E2941F;">Snapshot</span>
+      <h2 class="mt-0">Where we work</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>2013</b><span>Society registered</span></div>
+      <div class="stat"><b>Bolpur</b><span>Home block</span></div>
+      <div class="stat"><b>3</b><span>Programme areas</span></div>
+      <div class="stat"><b>731204</b><span>Pin code served</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-clay">
+  <div class="wrap center">
+    <h2 class="mt-0" style="color:#fff;">Have a question about our reports?</h2>
+    <a href="contact.html" class="btn btn-ghost-light">Contact us</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="images/alpana-logo.png" alt="ALPANA logo">
+          <span class="name">ALPANA</span>
+        </div>
+        <p style="max-width:34ch;font-size:0.92rem;">Association for Livelihood Promotion, Awareness and Need Assessment — a registered society working in Bolpur, Birbhum, West Bengal.</p>
+        <span class="badge-reg">Reg. No. S/2L/9874 of 2013–2014</span>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About us</a></li>
+          <li><a href="programs.html">Programmes</a></li>
+          <li><a href="reports.html">Reports &amp; impact</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reach us</h4>
+        <ul class="footer-links">
+          <li>Bhubandanga, Bolpur, Birbhum</li>
+          <li>Pin&nbsp;731204 (Near Lodge More)</li>
+          <li><a href="mailto:alpanaorg@gmail.com">alpanaorg@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> ALPANA. All rights reserved.</span>
+      <span>Website built for community use.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('primary-nav');
+  if(toggle){
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+  }
+</script>
+</body>
+</html>
