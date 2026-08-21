@@ -801,7 +801,7 @@ section{
   padding:12px 8px;
 }
 
-.stat b, .counter{
+.stat b{
   display:block;
   font-family:var(--display);
   font-size:clamp(3.2rem, 5.8vw, 4.6rem);
@@ -811,8 +811,6 @@ section{
   margin-bottom:8px;
   text-shadow:0 3px 18px rgba(255, 215, 0, 0.4);
   letter-spacing:-0.02em;
-  font-variant-numeric:tabular-nums;
-  min-height:1.05em;
 }
 
 .stat span{
