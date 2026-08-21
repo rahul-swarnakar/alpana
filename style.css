@@ -1903,3 +1903,81 @@ footer .wrap{
   font-weight:700;
   letter-spacing:0.02em;
 }
+
+/* ---------- Glossy Blinking Glowing Donate Us Tab ---------- */
+.nav-donate-btn{
+  position:relative;
+  background:linear-gradient(135deg, #FF6B35 0%, #F59E0B 50%, #EA580C 100%) !important;
+  background-size:200% auto !important;
+  color:#FFFFFF !important;
+  font-weight:800 !important;
+  padding:7px 16px !important;
+  border-radius:22px !important;
+  text-decoration:none !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:6px !important;
+  box-shadow:0 0 14px rgba(245, 158, 11, 0.75), 0 2px 8px rgba(234, 88, 12, 0.45);
+  animation:donateGlowPulse 2.2s infinite ease-in-out, donateGradientShift 3.5s infinite linear;
+  overflow:hidden;
+  border:1.5px solid rgba(255, 255, 255, 0.5) !important;
+  letter-spacing:0.02em;
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+  cursor:pointer;
+}
+
+.nav-donate-btn::after{
+  content:'';
+  position:absolute;
+  top:-50%;
+  left:-80%;
+  width:45%;
+  height:200%;
+  background:linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform:rotate(25deg);
+  animation:donateGlossySweep 2.8s infinite ease-in-out;
+  pointer-events:none;
+}
+
+@keyframes donateGlossySweep{
+  0%{ left:-80%; opacity:0; }
+  15%{ opacity:1; }
+  45%, 100%{ left:140%; opacity:0; }
+}
+
+@keyframes donateGlowPulse{
+  0%, 100%{
+    transform:scale(1);
+    box-shadow:0 0 10px rgba(245, 158, 11, 0.6), 0 2px 6px rgba(234, 88, 12, 0.35);
+  }
+  50%{
+    transform:scale(1.06);
+    box-shadow:0 0 24px rgba(245, 158, 11, 1), 0 0 38px rgba(234, 88, 12, 0.75);
+  }
+}
+
+@keyframes donateGradientShift{
+  0%{ background-position:0% 50%; }
+  50%{ background-position:100% 50%; }
+  100%{ background-position:0% 50%; }
+}
+
+.nav-donate-btn:hover{
+  transform:scale(1.1) translateY(-2px) !important;
+  box-shadow:0 0 30px rgba(245, 158, 11, 1), 0 4px 16px rgba(234, 88, 12, 0.8) !important;
+}
+
+/* Ensure mobile nav renders glossy donate button nicely */
+@media (max-width: 768px){
+  .nav-donate-btn{
+    margin-top:8px;
+    justify-content:center;
+    width:calc(100% - 20px);
+    text-align:center;
+  }
+}
