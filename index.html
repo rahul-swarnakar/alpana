@@ -6,7 +6,7 @@
 <title>ALPANA — Association for Livelihood Promotion, Awareness and Need Assessment</title>
 <meta name="description" content="ALPANA works in Bolpur, Birbhum on livelihood promotion, awareness building and need assessment for rural artisan and farming communities in West Bengal.">
 <link rel="icon" href="images/alpana-logo.png?v=2">
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
 
@@ -242,6 +242,7 @@
     const slider = document.getElementById('heroSlider');
     if(!slider) return;
     
+    const track = slider.querySelector('.slider-track');
     const slides = slider.querySelectorAll('.slide');
     const dots = slider.querySelectorAll('.dot');
     const prevBtn = document.getElementById('sliderPrev');
@@ -254,6 +255,10 @@
       if(index < 0) index = slideCount - 1;
       if(index >= slideCount) index = 0;
       currentIndex = index;
+
+      if(track){
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
 
       slides.forEach((s, i) => {
         s.classList.toggle('active', i === currentIndex);
@@ -269,54 +274,49 @@
     function nextSlide(){ showSlide(currentIndex + 1); }
     function prevSlide(){ showSlide(currentIndex - 1); }
 
-    function startAutoPlay(){
-      stopAutoPlay();
-      timer = setInterval(nextSlide, 5000);
-    }
-
-    function stopAutoPlay(){
+    function resetTimer(){
       if(timer) clearInterval(timer);
+      timer = setInterval(nextSlide, 3500);
     }
 
-    if(nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
-    if(prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
+    if(nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetTimer(); });
+    if(prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetTimer(); });
 
     dots.forEach(dot => {
       dot.addEventListener('click', () => {
         const idx = parseInt(dot.getAttribute('data-index'), 10);
         showSlide(idx);
-        startAutoPlay();
+        resetTimer();
       });
     });
 
-    slider.addEventListener('mouseenter', stopAutoPlay);
-    slider.addEventListener('mouseleave', startAutoPlay);
-
-    // Touch Swipe
+    // Touch Swipe Support
     let touchStartX = 0;
     let touchEndX = 0;
     slider.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
-      stopAutoPlay();
     }, {passive:true});
 
     slider.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
-      if(touchStartX - touchEndX > 50){
+      if(touchStartX - touchEndX > 40){
         nextSlide();
-      } else if(touchEndX - touchStartX > 50){
+        resetTimer();
+      } else if(touchEndX - touchStartX > 40){
         prevSlide();
+        resetTimer();
       }
-      startAutoPlay();
     }, {passive:true});
 
     // Keyboard Arrow Keys
     document.addEventListener('keydown', (e) => {
-      if(e.key === 'ArrowRight') { nextSlide(); startAutoPlay(); }
-      if(e.key === 'ArrowLeft') { prevSlide(); startAutoPlay(); }
+      if(e.key === 'ArrowRight') { nextSlide(); resetTimer(); }
+      if(e.key === 'ArrowLeft') { prevSlide(); resetTimer(); }
     });
 
-    startAutoPlay();
+    // Start auto scrolling immediately
+    showSlide(0);
+    resetTimer();
   })();
 </script>
 </body>
