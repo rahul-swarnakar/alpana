@@ -1796,3 +1796,45 @@ footer .wrap{
   padding:3px 10px;
   border-radius:12px;
 }
+
+/* Orange Action Button & Application Highlight */
+.btn-orange{
+  background:linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+  color:#FFFFFF !important;
+  font-weight:700;
+  border:none;
+  box-shadow:0 4px 14px rgba(234, 88, 12, 0.35);
+  transition:all 0.25s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 26px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:0.96rem;
+}
+
+.btn-orange:hover, .btn-orange:focus{
+  background:linear-gradient(135deg, #FB923C 0%, #F97316 100%);
+  transform:translateY(-2px);
+  box-shadow:0 8px 22px rgba(234, 88, 12, 0.45);
+}
+
+.apply-card-orange{
+  background:linear-gradient(180deg, #FFFFFF 0%, #FFF7ED 100%);
+  border:2px solid #FDBA74;
+  border-radius:16px;
+  padding:clamp(24px, 4vw, 36px);
+  box-shadow:0 8px 24px rgba(234, 88, 12, 0.09);
+}
+
+.badge-orange{
+  display:inline-block;
+  background:linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+  color:#FFFFFF;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:0.78rem;
+  font-weight:700;
+  letter-spacing:0.02em;
+}
