@@ -853,6 +853,55 @@ section{
   }
 }
 
+/* ---------- About Hero Two-Column Layout ---------- */
+.about-hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr 0.95fr;
+  gap:clamp(32px, 4.5vw, 56px);
+  align-items:center;
+}
+
+.about-hero-text{
+  text-align:left;
+}
+
+.about-hero-image-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.about-hero-card{
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:10px;
+  box-shadow:0 18px 45px rgba(0,0,0,0.35);
+  border:2px solid rgba(255,255,255,0.18);
+  overflow:hidden;
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+  width:100%;
+}
+
+.about-hero-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 24px 50px rgba(0,0,0,0.45);
+}
+
+.about-hero-img{
+  width:100%;
+  height:auto;
+  border-radius:12px;
+  display:block;
+  object-fit:cover;
+}
+
+@media (max-width: 900px){
+  .about-hero-grid{
+    grid-template-columns:1fr;
+    gap:32px;
+  }
+}
+
 /* ---------- Our Outreach & Impact Snapshot Section ---------- */
 .section-outreach{
   background:linear-gradient(180deg, #182C48 0%, #122238 100%);
