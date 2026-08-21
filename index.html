@@ -6,7 +6,7 @@
 <title>ALPANA — Association for Livelihood Promotion, Awareness and Need Assessment</title>
 <meta name="description" content="ALPANA works in Bolpur, Birbhum on livelihood promotion, awareness building and need assessment for rural artisan and farming communities in West Bengal.">
 <link rel="icon" href="images/alpana-logo.png?v=2">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
 
@@ -33,20 +33,60 @@
   </div>
 </header>
 
-<section class="hero">
-  <div class="hero-motif"><img src="images/hero-motif.svg" alt=""></div>
-  <div class="wrap">
-    <div>
-      <span class="eyebrow">Bhubandanga, Bolpur</span>
-      <h1>Drawing a livelihood, line by line, across Birbhum's villages.</h1>
-      <p class="lead">Just as an alpona is drawn one careful stroke at a time on a bare floor, we work household by household — building livelihoods, spreading awareness, and listening closely before we act.</p>
-      <div class="hero-cta">
-        <a href="programs.html" class="btn btn-solid">See our programs</a>
-        <a href="contact.html" class="btn btn-ghost-light">Get in touch</a>
+<section class="hero hero-slider-section">
+  <div class="hero-slider" id="heroSlider" aria-label="ALPANA Community Photo Gallery">
+    <div class="slider-track">
+      <!-- Slide 1 -->
+      <div class="slide active">
+        <img src="images/slider-1.jpg" alt="ALPANA Community Gathering and Awareness Discussion">
+        <div class="slide-caption">
+          <span class="slide-tag">Community &amp; Awareness</span>
+          <p>Participatory village meetings &amp; community empowerment in Bolpur</p>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <img src="images/slider-2.jpg" alt="ALPANA Rural Livelihood and Plantation Initiatives">
+        <div class="slide-caption">
+          <span class="slide-tag">Livelihood &amp; Ecology</span>
+          <p>Sustainable rural initiatives and community teamwork</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <img src="images/slider-3.jpg" alt="ALPANA Rural Education and Child Development">
+        <div class="slide-caption">
+          <span class="slide-tag">Education &amp; Development</span>
+          <p>Supporting rural learning and community education</p>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="slide">
+        <img src="images/slider-4.jpg" alt="ALPANA Need Assessment and Household Livelihood Support">
+        <div class="slide-caption">
+          <span class="slide-tag">Need Assessment &amp; Promotion</span>
+          <p>Household-level mapping and grassroots livelihood support</p>
+        </div>
       </div>
     </div>
-    <div class="hero-media">
-      <img src="images/alpana-banner.jpg" alt="Association for Livelihood Promotion, Awareness and Need Assessment (ALPANA)" class="hero-banner-img">
+
+    <!-- Navigation Arrows -->
+    <button class="slider-btn prev" id="sliderPrev" aria-label="Previous Slide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="slider-btn next" id="sliderNext" aria-label="Next Slide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+
+    <!-- Indicators -->
+    <div class="slider-dots" id="sliderDots" role="tablist" aria-label="Slide navigation">
+      <button class="dot active" data-index="0" aria-label="Slide 1" role="tab" aria-selected="true"></button>
+      <button class="dot" data-index="1" aria-label="Slide 2" role="tab" aria-selected="false"></button>
+      <button class="dot" data-index="2" aria-label="Slide 3" role="tab" aria-selected="false"></button>
+      <button class="dot" data-index="3" aria-label="Slide 4" role="tab" aria-selected="false"></button>
     </div>
   </div>
 </section>
@@ -170,6 +210,8 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+  
+  // Mobile Nav Toggle
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.getElementById('primary-nav');
   if(toggle && nav){
@@ -194,6 +236,88 @@
       }
     });
   }
+
+  // Hero Image Slider
+  (function initSlider(){
+    const slider = document.getElementById('heroSlider');
+    if(!slider) return;
+    
+    const slides = slider.querySelectorAll('.slide');
+    const dots = slider.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('sliderPrev');
+    const nextBtn = document.getElementById('sliderNext');
+    let currentIndex = 0;
+    let timer = null;
+    const slideCount = slides.length;
+
+    function showSlide(index){
+      if(index < 0) index = slideCount - 1;
+      if(index >= slideCount) index = 0;
+      currentIndex = index;
+
+      slides.forEach((s, i) => {
+        s.classList.toggle('active', i === currentIndex);
+      });
+
+      dots.forEach((d, i) => {
+        const active = i === currentIndex;
+        d.classList.toggle('active', active);
+        d.setAttribute('aria-selected', active);
+      });
+    }
+
+    function nextSlide(){ showSlide(currentIndex + 1); }
+    function prevSlide(){ showSlide(currentIndex - 1); }
+
+    function startAutoPlay(){
+      stopAutoPlay();
+      timer = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoPlay(){
+      if(timer) clearInterval(timer);
+    }
+
+    if(nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
+    if(prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.getAttribute('data-index'), 10);
+        showSlide(idx);
+        startAutoPlay();
+      });
+    });
+
+    slider.addEventListener('mouseenter', stopAutoPlay);
+    slider.addEventListener('mouseleave', startAutoPlay);
+
+    // Touch Swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+    slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoPlay();
+    }, {passive:true});
+
+    slider.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if(touchStartX - touchEndX > 50){
+        nextSlide();
+      } else if(touchEndX - touchStartX > 50){
+        prevSlide();
+      }
+      startAutoPlay();
+    }, {passive:true});
+
+    // Keyboard Arrow Keys
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'ArrowRight') { nextSlide(); startAutoPlay(); }
+      if(e.key === 'ArrowLeft') { prevSlide(); startAutoPlay(); }
+    });
+
+    startAutoPlay();
+  })();
 </script>
 </body>
 </html>
