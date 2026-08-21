@@ -1724,3 +1724,75 @@ footer .wrap{
   font-weight:700;
   letter-spacing:0.02em;
 }
+
+/* ---------- Career & Opportunities Page ---------- */
+.job-list{
+  display:grid;
+  gap:20px;
+  max-width:880px;
+  margin:0 auto;
+}
+
+.job-card{
+  background:#FFFFFF;
+  border:1.5px solid #E2E8F0;
+  border-radius:14px;
+  padding:clamp(20px, 3vw, 28px);
+  color:#1F3556;
+  box-shadow:0 4px 16px rgba(0,0,0,0.06);
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+  display:flex;
+  flex-direction:column;
+}
+
+.job-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(0,0,0,0.12);
+}
+
+.job-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:14px;
+  margin-bottom:12px;
+}
+
+.job-title{
+  font-family:var(--display);
+  font-size:clamp(1.2rem, 1.8vw, 1.45rem);
+  font-weight:700;
+  color:var(--indigo-deep);
+  margin:0 0 6px;
+}
+
+.job-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  font-size:0.84rem;
+  color:#64748B;
+  font-weight:600;
+}
+
+.job-desc{
+  font-size:0.96rem;
+  color:#3d3129;
+  line-height:1.68;
+  margin:0 0 14px;
+}
+
+.job-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.job-tag{
+  background:rgba(31, 53, 86, 0.08);
+  color:var(--indigo-deep);
+  font-size:0.76rem;
+  font-weight:700;
+  padding:3px 10px;
+  border-radius:12px;
+}
