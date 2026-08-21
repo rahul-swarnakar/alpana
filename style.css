@@ -801,14 +801,17 @@ section{
   padding:12px;
 }
 
-.stat b{
-  display:block;
+.stat b, .odometer{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   font-family:var(--display);
-  font-size:clamp(2.2rem, 3.8vw, 2.8rem);
+  font-size:clamp(2.4rem, 4vw, 3.2rem);
   font-weight:700;
   color:#FFD700;
-  line-height:1.1;
+  line-height:1;
   margin-bottom:6px;
+  text-shadow:0 2px 10px rgba(255, 215, 0, 0.25);
 }
 
 .stat span{
@@ -824,6 +827,45 @@ section{
   .stats{
     grid-template-columns:repeat(2, 1fr);
   }
+}
+
+/* ---------- Odometer 1-Second Vertical Slot Rolling ---------- */
+.odometer{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  line-height:1;
+  vertical-align:middle;
+}
+
+.odometer-digit{
+  display:inline-block;
+  height:1.15em;
+  line-height:1.15em;
+  overflow:hidden;
+  position:relative;
+  vertical-align:middle;
+}
+
+.odometer-ribbon{
+  display:flex;
+  flex-direction:column;
+  transition:transform 1.0s cubic-bezier(0.16, 0.9, 0.3, 1);
+  will-change:transform;
+  transform:translateY(0);
+}
+
+.odometer-ribbon span{
+  display:block;
+  height:1.15em;
+  line-height:1.15em;
+  text-align:center;
+  font-family:var(--display);
+  font-size:inherit;
+  font-weight:700;
+  color:#FFD700;
+  flex-shrink:0;
 }
 
 /* ---------- Two-Column Layout ---------- */
