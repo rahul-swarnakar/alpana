@@ -826,6 +826,43 @@ section{
   }
 }
 
+/* ---------- Odometer Vertical Rolling Digits ---------- */
+.odometer{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  line-height:1;
+  vertical-align:middle;
+}
+
+.odometer-col{
+  display:inline-block;
+  height:1.18em;
+  overflow:hidden;
+  position:relative;
+  line-height:1.18em;
+}
+
+.odometer-ribbon{
+  display:flex;
+  flex-direction:column;
+  transition:transform 2.4s cubic-bezier(0.12, 0.85, 0.28, 1);
+  will-change:transform;
+  transform:translateY(0);
+}
+
+.odometer-ribbon span{
+  display:block;
+  height:1.18em;
+  line-height:1.18em;
+  text-align:center;
+  font-family:var(--display);
+  font-size:inherit;
+  font-weight:inherit;
+  color:inherit;
+}
+
 /* ---------- Two-Column Layout ---------- */
 .two-col{
   display:grid;
