@@ -1741,6 +1741,22 @@ footer .wrap{
 
 .footer-links a:hover{ color:var(--marigold); }
 
+.footer-payments{
+  margin-top:14px;
+}
+
+.footer-payments img{
+  max-width:185px;
+  width:100%;
+  height:auto;
+  background:#FFFFFF;
+  padding:5px 8px;
+  border-radius:8px;
+  box-shadow:0 3px 10px rgba(0, 0, 0, 0.22);
+  display:block;
+  object-fit:contain;
+}
+
 .footer-bottom{
   border-top:1px solid rgba(246, 240, 225, 0.14);
   margin-top:40px;
