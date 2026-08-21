@@ -964,8 +964,55 @@ section{
   color:#2E9B48;
   line-height:1.1;
   margin-bottom:5px;
-  display:block;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   letter-spacing:-0.01em;
+}
+
+/* Outreach 0.8s Odometer Vertical Reel */
+.outreach-num.odometer{
+  overflow:hidden;
+  vertical-align:middle;
+}
+
+.outreach-num .odometer-digit{
+  display:inline-block;
+  height:1.15em;
+  line-height:1.15em;
+  overflow:hidden;
+  position:relative;
+  vertical-align:middle;
+}
+
+.outreach-num .odometer-ribbon{
+  display:flex;
+  flex-direction:column;
+  transition:transform 0.8s cubic-bezier(0.16, 0.85, 0.3, 1);
+  will-change:transform;
+  transform:translateY(0);
+}
+
+.outreach-num .odometer-ribbon span{
+  display:block;
+  height:1.15em;
+  line-height:1.15em;
+  text-align:center;
+  font-family:var(--display);
+  font-size:inherit;
+  font-weight:800;
+  color:inherit;
+  flex-shrink:0;
+}
+
+.outreach-num .odometer-sep{
+  display:inline-block;
+  height:1.15em;
+  line-height:1.15em;
+  vertical-align:middle;
+  color:inherit;
+  font-family:var(--display);
+  font-weight:800;
 }
 
 .outreach-card .outreach-label{

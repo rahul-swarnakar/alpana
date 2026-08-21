@@ -6,7 +6,7 @@
 <title>ALPANA — Association for Livelihood Promotion, Awareness and Need Assessment</title>
 <meta name="description" content="ALPANA works in Bolpur, Birbhum on livelihood promotion, awareness building and need assessment for rural artisan and farming communities in West Bengal.">
 <link rel="icon" href="images/alpana-logo.png?v=4">
-<link rel="stylesheet" href="style.css?v=23">
+<link rel="stylesheet" href="style.css?v=24">
 </head>
 <body>
 
@@ -151,91 +151,91 @@
       <div class="outreach-grid">
         <!-- Card 1 (Highlighted) -->
         <div class="outreach-card highlight">
-          <span class="outreach-num">1</span>
+          <span class="outreach-num odometer" data-value="1">1</span>
           <span class="outreach-label">Total Ongoing Projects</span>
           <span class="outreach-sub">Active interventions</span>
         </div>
 
         <!-- Card 2 -->
         <div class="outreach-card">
-          <span class="outreach-num">0</span>
+          <span class="outreach-num odometer" data-value="0">0</span>
           <span class="outreach-label">FCRA Projects</span>
           <span class="outreach-sub">Supported initiatives</span>
         </div>
 
         <!-- Card 3 -->
         <div class="outreach-card">
-          <span class="outreach-num">0</span>
+          <span class="outreach-num odometer" data-value="0">0</span>
           <span class="outreach-label">Indian Projects</span>
           <span class="outreach-sub">Domestic support</span>
         </div>
 
         <!-- Card 4 -->
         <div class="outreach-card">
-          <span class="outreach-num">1</span>
+          <span class="outreach-num odometer" data-value="1">1</span>
           <span class="outreach-label">CSR Projects</span>
           <span class="outreach-sub">Corporate partnerships</span>
         </div>
 
         <!-- Card 5 -->
         <div class="outreach-card">
-          <span class="outreach-num">03</span>
+          <span class="outreach-num odometer" data-value="03">03</span>
           <span class="outreach-label">Districts Covered</span>
           <span class="outreach-sub">Current intervention</span>
         </div>
 
         <!-- Card 6 -->
         <div class="outreach-card">
-          <span class="outreach-num">18</span>
+          <span class="outreach-num odometer" data-value="18">18</span>
           <span class="outreach-label">Blocks Reached</span>
           <span class="outreach-sub">Across Birbhum &amp; WB</span>
         </div>
 
         <!-- Card 7 -->
         <div class="outreach-card">
-          <span class="outreach-num">112</span>
+          <span class="outreach-num odometer" data-value="112">112</span>
           <span class="outreach-label">Panchayats</span>
           <span class="outreach-sub">Community-level reach</span>
         </div>
 
         <!-- Card 8 -->
         <div class="outreach-card">
-          <span class="outreach-num">748</span>
+          <span class="outreach-num odometer" data-value="748">748</span>
           <span class="outreach-label">Villages</span>
           <span class="outreach-sub">Grassroots presence</span>
         </div>
 
         <!-- Card 9 -->
         <div class="outreach-card">
-          <span class="outreach-num">1,06,598</span>
+          <span class="outreach-num odometer" data-value="1,06,598">1,06,598</span>
           <span class="outreach-label">Households</span>
           <span class="outreach-sub">Families connected</span>
         </div>
 
         <!-- Card 10 -->
         <div class="outreach-card">
-          <span class="outreach-num">1,07,735</span>
+          <span class="outreach-num odometer" data-value="1,07,735">1,07,735</span>
           <span class="outreach-label">Beneficiaries</span>
           <span class="outreach-sub">Direct community impact</span>
         </div>
 
         <!-- Card 11 -->
         <div class="outreach-card">
-          <span class="outreach-num">99</span>
+          <span class="outreach-num odometer" data-value="99">99</span>
           <span class="outreach-label">School Interventions</span>
           <span class="outreach-sub">Education support</span>
         </div>
 
         <!-- Card 12 -->
         <div class="outreach-card">
-          <span class="outreach-num">29,467</span>
+          <span class="outreach-num odometer" data-value="29,467">29,467</span>
           <span class="outreach-label">Children Reached</span>
           <span class="outreach-sub">Child-focused initiatives</span>
         </div>
 
         <!-- Card 13 (Highlighted) -->
         <div class="outreach-card highlight">
-          <span class="outreach-num">2,74,298</span>
+          <span class="outreach-num odometer" data-value="2,74,298">2,74,298</span>
           <span class="outreach-label">Total Population Reached</span>
           <span class="outreach-sub">Overall community coverage</span>
         </div>
@@ -427,6 +427,73 @@
     // Start auto scrolling immediately
     showSlide(0);
     resetTimer();
+  })();
+
+  // Impact Snapshot 0.8-Second Odometer Rolling Digits
+  (function initOutreachOdometer(){
+    const odometers = document.querySelectorAll('.outreach-num.odometer');
+    if(!odometers.length) return;
+
+    odometers.forEach(odometer => {
+      const valStr = odometer.getAttribute('data-value') || odometer.textContent.trim();
+      odometer.innerHTML = '';
+
+      valStr.split('').forEach((char, colIdx) => {
+        if(/\d/.test(char)){
+          const digitWrap = document.createElement('span');
+          digitWrap.className = 'odometer-digit';
+
+          const ribbon = document.createElement('span');
+          ribbon.className = 'odometer-ribbon';
+
+          const target = parseInt(char, 10);
+          // 1 cycle of 0..9 then 0..target
+          let html = '';
+          for(let d = 0; d <= 9; d++){
+            html += `<span>${d}</span>`;
+          }
+          for(let d = 0; d <= target; d++){
+            html += `<span>${d}</span>`;
+          }
+          ribbon.innerHTML = html;
+          ribbon.dataset.targetIndex = (10 + target);
+          ribbon.dataset.delay = colIdx * 30; // 30ms stagger
+
+          digitWrap.appendChild(ribbon);
+          odometer.appendChild(digitWrap);
+        } else {
+          const sep = document.createElement('span');
+          sep.className = 'odometer-sep';
+          sep.textContent = char;
+          odometer.appendChild(sep);
+        }
+      });
+    });
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const odometer = entry.target;
+          const ribbons = odometer.querySelectorAll('.odometer-ribbon');
+
+          ribbons.forEach(ribbon => {
+            const targetIdx = parseInt(ribbon.dataset.targetIndex, 10);
+            const delay = parseInt(ribbon.dataset.delay, 10) || 0;
+            const totalItems = ribbon.children.length;
+            if(targetIdx > 0 && totalItems > 1){
+              setTimeout(() => {
+                const shiftPercent = (targetIdx / totalItems) * 100;
+                ribbon.style.transform = `translateY(-${shiftPercent}%)`;
+              }, delay + 30);
+            }
+          });
+
+          obs.unobserve(odometer);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    odometers.forEach(o => observer.observe(o));
   })();
 </script>
 </body>
