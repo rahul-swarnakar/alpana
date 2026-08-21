@@ -794,60 +794,61 @@ section{
 .vision-mission-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:clamp(24px, 3.5vw, 40px);
-  max-width:980px;
+  gap:clamp(24px, 3.5vw, 36px);
+  max-width:960px;
   margin:0 auto;
 }
 
 .vm-card{
-  background:rgba(251, 248, 240, 0.05);
-  border:1px solid rgba(246, 240, 225, 0.16);
+  background:var(--paper);
+  border:1px solid rgba(31, 53, 86, 0.12);
+  border-top:4px solid var(--marigold);
   border-radius:10px;
-  padding:clamp(28px, 3.5vw, 40px) clamp(24px, 3vw, 32px);
+  padding:clamp(28px, 3.5vw, 36px) clamp(24px, 3vw, 32px);
   display:flex;
   flex-direction:column;
   position:relative;
-  transition:transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  backdrop-filter:blur(4px);
+  transition:transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow:0 6px 18px rgba(31, 53, 86, 0.05);
 }
 
 .vm-card:hover{
   transform:translateY(-4px);
-  background:rgba(251, 248, 240, 0.09);
-  border-color:var(--marigold);
-  box-shadow:0 16px 36px rgba(0, 0, 0, 0.35);
+  border-color:var(--clay);
+  box-shadow:0 16px 36px rgba(31, 53, 86, 0.1);
 }
 
 .vm-icon-wrap{
-  width:64px;
-  height:64px;
+  width:60px;
+  height:60px;
   border-radius:12px;
-  background:linear-gradient(135deg, rgba(226, 148, 31, 0.2), rgba(166, 64, 44, 0.25));
-  border:1.5px solid rgba(226, 148, 31, 0.4);
+  background:linear-gradient(135deg, rgba(226, 148, 31, 0.15), rgba(166, 64, 44, 0.15));
+  border:1.5px solid rgba(226, 148, 31, 0.35);
   display:flex;
   align-items:center;
   justify-content:center;
-  margin-bottom:20px;
-  color:var(--marigold);
+  margin-bottom:18px;
+  color:var(--clay);
   flex-shrink:0;
-  transition:transform 0.3s ease;
+  transition:transform 0.3s ease, color 0.3s ease;
 }
 
 .vm-card:hover .vm-icon-wrap{
   transform:scale(1.08) rotate(3deg);
+  color:var(--marigold);
   border-color:var(--marigold);
 }
 
 .vm-icon-wrap svg{
-  width:34px;
-  height:34px;
+  width:32px;
+  height:32px;
 }
 
 .vm-title{
   font-family:var(--display);
-  font-size:clamp(1.4rem, 2.2vw, 1.75rem);
+  font-size:clamp(1.35rem, 2.2vw, 1.7rem);
   font-weight:700;
-  color:var(--rice);
+  color:var(--indigo-deep);
   margin:0 0 12px;
   display:flex;
   align-items:center;
@@ -855,16 +856,38 @@ section{
 }
 
 .vm-text{
-  font-size:clamp(0.98rem, 1.4vw, 1.06rem);
-  color:#DCD3C0;
+  font-size:clamp(0.96rem, 1.4vw, 1.05rem);
+  color:#3d3129;
   line-height:1.75;
   margin:0;
+}
+
+/* Dark Mode override when inside section-indigo */
+.section-indigo .vm-card{
+  background:rgba(251, 248, 240, 0.05);
+  border:1px solid rgba(246, 240, 225, 0.16);
+  border-top:4px solid var(--marigold);
+  box-shadow:none;
+}
+
+.section-indigo .vm-card:hover{
+  background:rgba(251, 248, 240, 0.09);
+  border-color:var(--marigold);
+  box-shadow:0 16px 36px rgba(0, 0, 0, 0.35);
+}
+
+.section-indigo .vm-title{
+  color:var(--rice);
+}
+
+.section-indigo .vm-text{
+  color:#DCD3C0;
 }
 
 @media (max-width: 768px){
   .vision-mission-grid{
     grid-template-columns:1fr;
-    gap:24px;
+    gap:22px;
   }
 }
 
