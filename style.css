@@ -709,6 +709,131 @@ section{
 .card h3{ font-size:1.1rem; }
 .card p{ font-size:0.92rem; color:#4a3d34; margin-bottom:0.5em; }
 
+/* ---------- Board Members Grid ---------- */
+.board-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+  gap:clamp(20px, 2.5vw, 28px);
+  justify-content:center;
+}
+
+.board-card{
+  background:var(--paper);
+  border:1px solid rgba(31, 53, 86, 0.12);
+  border-radius:8px;
+  padding:28px 20px 24px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position:relative;
+}
+
+.board-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 30px rgba(31, 53, 86, 0.09);
+  border-color:rgba(166, 64, 44, 0.35);
+}
+
+.member-avatar{
+  width:96px;
+  height:96px;
+  border-radius:50%;
+  margin-bottom:16px;
+  overflow:hidden;
+  border:3px solid var(--rice-2);
+  background:var(--rice);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 10px rgba(0, 0, 0, 0.06);
+  flex-shrink:0;
+  transition:border-color 0.25s ease, transform 0.25s ease;
+}
+
+.board-card:hover .member-avatar{
+  border-color:var(--marigold);
+  transform:scale(1.04);
+}
+
+.member-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+.avatar-ph{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--indigo);
+  background:linear-gradient(135deg, rgba(31, 53, 86, 0.08), rgba(166, 64, 44, 0.08));
+}
+
+.avatar-ph svg{
+  width:44px;
+  height:44px;
+  opacity:0.75;
+}
+
+.member-name{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:1.1rem;
+  color:var(--indigo-deep);
+  margin:0 0 8px;
+  line-height:1.25;
+}
+
+.member-role{
+  display:inline-block;
+  font-family:var(--body);
+  font-size:0.8rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  padding:4px 12px;
+  border-radius:20px;
+  background:rgba(31, 53, 86, 0.08);
+  color:var(--indigo);
+  margin-top:auto;
+}
+
+.member-role.role-lead{
+  background:rgba(166, 64, 44, 0.12);
+  color:var(--clay-dark);
+}
+
+@media (max-width: 600px){
+  .board-grid{
+    grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+    gap:16px;
+  }
+  .board-card{
+    padding:20px 14px 18px;
+  }
+  .member-avatar{
+    width:80px;
+    height:80px;
+    margin-bottom:12px;
+  }
+  .member-avatar svg{
+    width:36px;
+    height:36px;
+  }
+  .member-name{
+    font-size:0.96rem;
+  }
+  .member-role{
+    font-size:0.72rem;
+    padding:3px 10px;
+  }
+}
+
 /* ---------- Timeline ---------- */
 .timeline{
   list-style:none;
