@@ -1926,7 +1926,9 @@ footer .wrap{
   cursor:pointer;
 }
 
-.nav-donate-btn::after{
+nav.main-nav a.nav-donate-btn::after,
+nav.main-nav a.nav-donate-btn:hover::after,
+nav.main-nav a.nav-donate-btn.active::after{
   content:'';
   position:absolute;
   top:-50%;
@@ -1942,6 +1944,8 @@ footer .wrap{
   transform:rotate(25deg);
   animation:donateGlossySweep 2.8s infinite ease-in-out;
   pointer-events:none;
+  bottom:auto !important;
+  right:auto !important;
 }
 
 @keyframes donateGlossySweep{
